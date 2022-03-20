@@ -110,7 +110,7 @@ async function get_stats(){
         await button.click();
     }
     await sleep(1000);
-    const skills = await page.evaluate((dictionary) =>{
+    const skills = await page.evaluate((getTranslator) =>{
         const skillData = []; // array for final data
 
         const skillItems = document.querySelectorAll('#char-app .char-skill-item'); // contains all main skill boxes
@@ -159,7 +159,7 @@ async function get_stats(){
             skillData.push(singleSkillInfo);
         });
         return skillData
-    },dictionary);
+    },getTranslator);
     await fs.writeFile("werte_Skills_kr.txt", skills.join("\r\n"))
 
     await browser.close()
