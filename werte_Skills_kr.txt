@@ -1,45 +1,45 @@
  혹한의 부름 : 12
         ❷❷❷  정신 강화 Lv.1 불완전한 지배 Lv.5 최후의 일격 Lv.5 
 https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_9.png
- 풍요 스킬 적중 시 아이덴티티 게이지 획득량 40% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png
-
-
+ 10레벨 멸화의 보석   40.00% 증가
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
+ 10레벨 홍염의 보석   20.00% 감소
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
  천벌 : 12
         ❷❷❷  정신 강화 Lv.4 방전 Lv.5 최후의 일격 Lv.5 
 https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_14.png
- 질풍 스킬 시전 속도가 12% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png
-
-
+ 10레벨 멸화의 보석   40.00% 증가
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
+ 10레벨 홍염의 보석   20.00% 감소
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
  엘리멘탈 리액트 : 12
         ❸❸❶  빠른 준비 Lv.5 최후의 일격 Lv.5 안정된 크리스탈 Lv.5 
 https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_18.png
+ 10레벨 멸화의 보석   40.00% 증가
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
  풍요 스킬 적중 시 아이덴티티 게이지 획득량 30% 증가
 https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png
-
-
  아이스 애로우 : 12
         ❸❶❶  빠른 준비 Lv.5 꿰뚫는 일격 Lv.5 얼음 송곳 Lv.5 
 https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_8.png
- 심판 스킬 적중 시 40% 확률로 '단죄' 상태를 제거하고 6초 동안 특수 효과 발동
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_201.png
-
-
+ 10레벨 멸화의 보석   40.00% 증가
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
+ 10레벨 홍염의 보석   20.00% 감소
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
  익스플로전 : 12
         ❷❸❷  정신 강화 Lv.5 약점 포착 Lv.5 최후의 일격 Lv.5 
 https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_5.png
- 질풍 스킬 시전 속도가 12% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png
-
-
+ 10레벨 멸화의 보석   40.00% 증가
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
+ 10레벨 홍염의 보석   20.00% 감소
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
  종말의 날 : 12
         ❷❷❷  정신 강화 Lv.4 소행성 Lv.5 최후의 일격 Lv.5 
 https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_6.png
- 질풍 스킬 시전 속도가 14% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png
-
-
+ 10레벨 멸화의 보석   40.00% 증가
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
+ 10레벨 홍염의 보석   20.00% 감소
+https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
  블레이즈 : 10
         ❷❷❶  피해 증폭 Lv.1 불꽃 확장 Lv.1 약점 포착 Lv.1 
 https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_3.png

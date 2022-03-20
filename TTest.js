@@ -6,9 +6,9 @@ async function test(){
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto("https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C")
-    const stats = await page.evaluate(() =>{
+    const infos = await page.evaluate(() =>{
         const skillInfos = [];
-        for (let i=0; i<5;i++) {
+        for (let i=1; i<5;i++) {
           const parent = document.querySelector(`#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i})`);
           const text = parent.querySelector("span").textContent;
           const image = parent.querySelector("img").src;
@@ -17,12 +17,13 @@ async function test(){
           skillInfos[i] = {text, image, level};
         }
         return skillInfos
-    })
+    });
+    console.log(infos)
     
 
     // verwenden kannste das dann so:
     // index => 0-based index vom skill
-    stats[index].text;
+    infos[index].text;
 
     // kannst das auch einfacher in loops oder map funktionen verwenden:
     const template = skillInfos.map(info => {

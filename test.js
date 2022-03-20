@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs/promises')
 const dictionary = require("./Translate.json")
-const { map } = require('cheerio/lib/api/traversing')
+const { map, index } = require('cheerio/lib/api/traversing')
 
 // const browser = await puppeteer.launch({ headless: false });
 
@@ -73,15 +73,21 @@ async function get_stats(){
     await fs.writeFile("werte_right_kr.txt", stats.join("\r\n"))
 
     const engraving = await page.evaluate(() =>{
-        const ausgabe = [];
+        const skillInfos = [];
         for (let i = 1; i < 7; i++) {
-            ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i}) > span`)).map(x => x.textContent));
-            ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i}) > img`)).map(x => x.src));
-            ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i})`)).map(x => x.textContent));
-          }
-        return ausgabe  
+            const parent = document.querySelector(
+                `#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i})`
+            );
+            const text = parent.querySelector('span').textContent;
+            const image = parent.querySelector('img').src;
+            const level = parseInt(parent.innerText.split('').pop()); // funktioniert nur wenn das level immer einstellig bleibt
+
+            skillInfos[i-1] = { text, image, level };
+        }
+        return skillInfos;  
     })
-    await fs.writeFile("werte_eng_kr.txt", engraving.join("\r\n"))
+    
+    //await fs.writeFile("werte_eng_kr.txt", engraving.join("\r\n"))
 
     const [button] = await page.$x("//button[contains(., '스킬')]");
 
@@ -102,20 +108,26 @@ async function get_stats(){
     await fs.writeFile("werte_Skills_kr.txt", skills.join("\r\n"))
 
     await browser.close()
-    console.info(stats.map(translate))
-    console.info(engraving.map(translate))
+    //console.info(stats.map(translate))
+
+    
+    länge = engraving.length;
+    for (let i = 0; i < länge; i++){
+        engraving[i].text = dictionary[engraving[i].text]
+    }
+    console.log(engraving)
     return {stats : stats.map(translate), engraving : engraving, skill : skills};
 }
 //get_stats()
 
 function translate(input) {
-    if (!(input in dictionary.stats)) return input;
+    if (!(input in dictionary)) return input;
     return dictionary[input];
   }
 
 async function main(){
     
-    var values = await get_stats()
+    await get_stats()
     //console.info(values);
 }
 //console.info(translate("치명"))
