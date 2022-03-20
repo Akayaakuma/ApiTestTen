@@ -141,15 +141,22 @@ async function get_stats(){
                 // check if element is a gem (if the row contains an element with the class .text-grade5 its a gem)
                 else if (skillListElement.querySelectorAll('.text-grade5').length > 0) {
                     const nameText = skillListElement.querySelector('.text-grade5').innerText;
-                    const [value, name] = /([0-9]+.[0-9]+)% (.+)$/.exec(nameText).slice(1, 3);
+                    const [value, name] = /([0-9]+(.+))/.exec(nameText).slice(1, 3);
+
+                    const infoText = skillListElement.querySelector('p span:last-child').innerText;
+                    const [invalue, infoName] = /([0-9]+.[0-9]+)% (.+)$/.match(infoText).slice(1, 3);
+
                     const skillTranslator = getTranslator("Gem")
                     singleSkillInfo.gems.push({
                         image: skillListElement.querySelector('img').src,
                         name: {
-                            Lev:value,
+                            value,
                             name: skillTranslator(name)
                         },
-                        info: skillListElement.querySelector('p span:last-child').innerText,
+                        info: {
+                            invalue,
+                            name: killTranslator(infoName)
+                        },
                     });
                 }
 

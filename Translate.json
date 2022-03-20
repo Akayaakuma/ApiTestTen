@@ -41,7 +41,9 @@
 
     "Gem" : {
         "레벨 멸화의 보석": "Azure Gem(dmg)",
-        "레벨 홍염의 보석": "Farsea Gem(cdr)"
+        "레벨 홍염의 보석": "Farsea Gem(cdr)",
+        "증가": "Damage",
+        "감소": "CDR"
     },
 
     "Runen" : {
