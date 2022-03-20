@@ -115,7 +115,7 @@ async function get_stats(){
 
         const skillItems = document.querySelectorAll('#char-app .char-skill-item'); // contains all main skill boxes
 
-        skillItems.forEach((skillItem) => {
+        skillItems.forEach((skillItem,getTranslator) => {
             // place to store info about the currently processed skill
             const singleSkillInfo = {
                 skill: {},
