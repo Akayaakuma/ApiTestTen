@@ -1,0 +1,30 @@
+{
+    "stats": {
+    "치명": "Crit",
+    "특화": "Specialized",
+    "제압": "Domination",
+    "신속": "Swiftness",
+    "인내": "Endurance",
+    "숙련": "Expertise"
+    },
+
+
+    "혹한의 부름": "Frost Call",
+    "천벌": "Punishing Strike",
+    "엘리멘탈 리액트": "EsotericReaction",
+    "아이스 애로우": "Rime Arrow",
+    "익스플로전": "explosion",
+    "종말의 날": "Doomsday",
+    "블레이즈": "Blaze",
+    "돌풍": "squall",
+
+
+    "속전속결": "All out attack",
+    "원한": "Grudge",
+    "저주받은 인형": "cursed Doll",
+    "타격의 대가": "Hitmaster",
+    "환류": "Reflux",
+    "아드레날린": "Adrenalin"
+
+
+}
