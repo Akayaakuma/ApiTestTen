@@ -5,6 +5,10 @@ const { map, index } = require('cheerio/lib/api/traversing')
 
 // const browser = await puppeteer.launch({ headless: false });
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function screenshotWebPage(){
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
@@ -59,13 +63,23 @@ async function get_stats(){
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto("https://loawa.com/char/%EC%A0%9C%EC%9E%90") //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
-    
+    await sleep(1000);
     const stats = await page.evaluate(() =>{
         const ausgabe = [];
+        x = 0
         for (let ii = 4;ii < 7; ii++){
             for (let i = 1; i < 3; i++) {
-                ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i}) > span > span.--title`)).map(x => x.textContent));
-                ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i}) > span > span.--value`)).map(x => x.textContent));
+                //ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i}) > span > span.--title`)).map(x => x.textContent));
+                //ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i}) > span > span.--value`)).map(x => x.textContent));
+                
+                const parent = document.querySelector(
+                    `#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i})`
+                );
+                const stat = parent.querySelector('span.--title').textContent;
+                const value = parent.querySelector('span.--value').textContent;
+
+                ausgabe[x] = {stat, value};
+                x++
             }
         }
         return ausgabe  
@@ -94,7 +108,7 @@ async function get_stats(){
     if (button) {
         await button.click();
     }
-
+    await sleep(1000);
     const skills = await page.evaluate(() =>{
         const ausgabe = [];
         for(let ii = 2; ii < 10; ii++){
@@ -113,21 +127,27 @@ async function get_stats(){
     
     länge = engraving.length;
     for (let i = 0; i < länge; i++){
-        engraving[i].text = dictionary[engraving[i].text]
+        engraving[i].text = dictionary.Engraving[engraving[i].text]
     }
-    console.log(engraving)
-    return {stats : stats.map(translate), engraving : engraving, skill : skills};
+    
+    länge = stats.length;
+    for (let i = 0; i < länge; i++){
+        stats[i].stat = dictionary.Stats[stats[i].stat]
+    }
+
+    return {stats : stats, engraving : engraving, skill : skills};
 }
 //get_stats()
 
 function translate(input) {
-    if (!(input in dictionary)) return input;
+    if (!(input in dictionary.Stats)) return input;
     return dictionary[input];
   }
 
 async function main(){
     
-    await get_stats()
+    var test = await get_stats()
+    console.log(test)
     //console.info(values);
 }
 //console.info(translate("치명"))
