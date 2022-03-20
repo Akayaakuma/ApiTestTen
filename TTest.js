@@ -1,6 +1,8 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs/promises')
 const dictionary = require("./Translate.json")
+const util = require("util"); // oben in die datei zu den anderen imports
+
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -71,8 +73,9 @@ async function ttest(){
             // place to store info about the currently processed skill
             const singleSkillInfo = {
                 skill: {},
-                runes: [],
                 gems: [],
+                runes: [],
+                
             };
 
             // contains the info rows of the current skill item (skill, runes, gems)
@@ -113,9 +116,11 @@ async function ttest(){
     await browser.close()
     return skills
 }
+
 async function main(){
     var zeugs = await ttest()
-    console.log(zeugs)
+    //console.log(zeugs)
+    console.log(util.inspect(zeugs[0].skill, false, null, true));
 }
 
 main()

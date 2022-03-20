@@ -1,55 +1,8 @@
- 혹한의 부름 : 12
-        ❷❷❷  정신 강화 Lv.1 불완전한 지배 Lv.5 최후의 일격 Lv.5 
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_9.png
- 10레벨 멸화의 보석   40.00% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
- 10레벨 홍염의 보석   20.00% 감소
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
- 천벌 : 12
-        ❷❷❷  정신 강화 Lv.4 방전 Lv.5 최후의 일격 Lv.5 
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_14.png
- 10레벨 멸화의 보석   40.00% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
- 10레벨 홍염의 보석   20.00% 감소
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
- 엘리멘탈 리액트 : 12
-        ❸❸❶  빠른 준비 Lv.5 최후의 일격 Lv.5 안정된 크리스탈 Lv.5 
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_18.png
- 10레벨 멸화의 보석   40.00% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
- 풍요 스킬 적중 시 아이덴티티 게이지 획득량 30% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png
- 아이스 애로우 : 12
-        ❸❶❶  빠른 준비 Lv.5 꿰뚫는 일격 Lv.5 얼음 송곳 Lv.5 
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_8.png
- 10레벨 멸화의 보석   40.00% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
- 10레벨 홍염의 보석   20.00% 감소
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
- 익스플로전 : 12
-        ❷❸❷  정신 강화 Lv.5 약점 포착 Lv.5 최후의 일격 Lv.5 
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_5.png
- 10레벨 멸화의 보석   40.00% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
- 10레벨 홍염의 보석   20.00% 감소
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
- 종말의 날 : 12
-        ❷❷❷  정신 강화 Lv.4 소행성 Lv.5 최후의 일격 Lv.5 
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_6.png
- 10레벨 멸화의 보석   40.00% 증가
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png
- 10레벨 홍염의 보석   20.00% 감소
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png
- 블레이즈 : 10
-        ❷❷❶  피해 증폭 Lv.1 불꽃 확장 Lv.1 약점 포착 Lv.1 
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_3.png
- 단죄 스킬 적중 시 40 확률로 자신에게 3초간 지속되는 '단죄' 상태 부여
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_198.png
-
-
- 돌풍 : 4
-        ❷  빠른 준비 Lv.1 
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_17.png
- 속행 스킬 사용 시 일정 확률로 전체 재사용 대기 시간이 12% 감소
-https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_196.png
-
+[object Object]
+[object Object]
+[object Object]
+[object Object]
+[object Object]
+[object Object]
+[object Object]
+[object Object]

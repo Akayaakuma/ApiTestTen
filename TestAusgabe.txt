@@ -1,0 +1,225 @@
+{
+  stats: [
+    { stat: 'Crit', value: '1796' },
+    { stat: 'Specialized', value: '0056' },
+    { stat: 'Domination', value: '0051' },
+    { stat: 'Swiftness', value: '0631' },
+    { stat: 'Endurance', value: '0053' },
+    { stat: 'Expertise', value: '0048' }
+  ],
+  engraving: [
+    {
+      text: 'All out attack',
+      image: 'https://static.loawa.com/seals/090.png',
+      level: 3
+    },
+    {
+      text: 'Grudge',
+      image: 'https://static.loawa.com/seals/058.png',
+      level: 3
+    },
+    {
+      text: 'cursed Doll',
+      image: 'https://static.loawa.com/seals/061.png',
+      level: 3
+    },
+    {
+      text: 'Hitmaster',
+      image: 'https://static.loawa.com/seals/087.png',
+      level: 3
+    },
+    {
+      text: 'Reflux',
+      image: 'https://static.loawa.com/seals/095.png',
+      level: 3
+    },
+    {
+      text: 'Adrenalin',
+      image: 'https://static.loawa.com/seals/089.png',
+      level: 2
+    }
+  ],
+  skill: [
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_9.png',
+        name: 'Frost Call',
+        level: 12
+      },
+      gems: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
+          name: '10레벨 멸화의 보석',
+          info: '40.00% 증가'
+        },
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
+          name: '10레벨 홍염의 보석',
+          info: '20.00% 감소'
+        }
+      ],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png',
+          name: '풍요',
+          info: '스킬 적중 시 아이덴티티 게이지 획득량 40% 증가'
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_14.png',
+        name: 'Punishing Strike',
+        level: 12
+      },
+      gems: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
+          name: '10레벨 멸화의 보석',
+          info: '40.00% 증가'
+        },
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
+          name: '10레벨 홍염의 보석',
+          info: '20.00% 감소'
+        }
+      ],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png',
+          name: '질풍',
+          info: '스킬 시전 속도가 12% 증가'
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_18.png',
+        name: 'EsotericReaction',
+        level: 12
+      },
+      gems: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
+          name: '10레벨 멸화의 보석',
+          info: '40.00% 증가'
+        }
+      ],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png',
+          name: '풍요',
+          info: '스킬 적중 시 아이덴티티 게이지 획득량 30% 증가'
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_8.png',
+        name: 'Rime Arrow',
+        level: 12
+      },
+      gems: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
+          name: '10레벨 멸화의 보석',
+          info: '40.00% 증가'
+        },
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
+          name: '10레벨 홍염의 보석',
+          info: '20.00% 감소'
+        }
+      ],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_201.png',
+          name: '심판',
+          info: "스킬 적중 시 40% 확률로 '단죄' 상태를 제거하고 6초 동안 특수 효과 발동"
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_5.png',
+        name: 'Explosion',
+        level: 12
+      },
+      gems: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
+          name: '10레벨 멸화의 보석',
+          info: '40.00% 증가'
+        },
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
+          name: '10레벨 홍염의 보석',
+          info: '20.00% 감소'
+        }
+      ],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png',
+          name: '질풍',
+          info: '스킬 시전 속도가 12% 증가'
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_6.png',
+        name: 'Doomsday',
+        level: 12
+      },
+      gems: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
+          name: '10레벨 멸화의 보석',
+          info: '40.00% 증가'
+        },
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
+          name: '10레벨 홍염의 보석',
+          info: '20.00% 감소'
+        }
+      ],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png',
+          name: '질풍',
+          info: '스킬 시전 속도가 14% 증가'
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_3.png',
+        name: 'Blaze',
+        level: 10
+      },
+      gems: [],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_198.png',
+          name: '단죄',
+          info: "스킬 적중 시 40 확률로 자신에게 3초간 지속되는 '단죄' 상태 부여"
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_17.png',
+        name: 'squall',
+        level: 4
+      },
+      gems: [],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_196.png',
+          name: '속행',
+          info: '스킬 사용 시 일정 확률로 전체 재사용 대기 시간이 12% 감소'
+        }
+      ]
+    }
+  ]
+}

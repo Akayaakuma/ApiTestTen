@@ -1,27 +1,27 @@
 {
     "Stats" :{
-    "치명": "Crit",
-    "특화": "Specialized",
-    "제압": "Domination",
-    "신속": "Swiftness",
-    "인내": "Endurance",
-    "숙련": "Expertise"
+        "치명": "Crit",
+        "특화": "Specialized",
+        "제압": "Domination",
+        "신속": "Swiftness",
+        "인내": "Endurance",
+        "숙련": "Expertise"
     },
 
 
     "Skills-Sorc" :{
-    "혹한의 부름": "Frost Call",
-    "천벌": "Punishing Strike",
-    "엘리멘탈 리액트": "EsotericReaction",
-    "아이스 애로우": "Rime Arrow",
-    "익스플로전": "Explosion",
-    "종말의 날": "Doomsday",
-    "블레이즈": "Blaze",
-    "돌풍": "squall",
-    "숭고한 해일": "Seraphic Hail",
-    "리버스 그래비티": "Reverse Gravity",
-    "라이트닝 볼트":"Lightning Bolt",
-    "엘레기안의 손길": "Elegians Touch"
+        "혹한의 부름": "Frost Call",
+        "천벌": "Punishing Strike",
+        "엘리멘탈 리액트": "EsotericReaction",
+        "아이스 애로우": "Rime Arrow",
+        "익스플로전": "Explosion",
+        "종말의 날": "Doomsday",
+        "블레이즈": "Blaze",
+        "돌풍": "squall",
+        "숭고한 해일": "Seraphic Hail",
+        "리버스 그래비티": "Reverse Gravity",
+        "라이트닝 볼트":"Lightning Bolt",
+        "엘레기안의 손길": "Elegians Touch"
     },
     "Rune":{
         "":"———",
@@ -31,13 +31,25 @@
     },
 
     "Engraving" : {
-    "속전속결": "All out attack",
-    "원한": "Grudge",
-    "저주받은 인형": "cursed Doll",
-    "타격의 대가": "Hitmaster",
-    "환류": "Reflux",
-    "아드레날린": "Adrenalin"
-    }
+        "속전속결": "All out attack",
+        "원한": "Grudge",
+        "저주받은 인형": "cursed Doll",
+        "타격의 대가": "Hitmaster",
+        "환류": "Reflux",
+        "아드레날린": "Adrenalin"
+    },
 
+    "Gem" : {
+        "레벨 멸화의 보석": "Azure Gem(dmg)",
+        "레벨 홍염의 보석": "Farsea Gem(cdr)"
+    },
+
+    "Runen" : {
+        "풍요": "",
+        "질풍": "",
+        "심판": "",
+        "단죄": "",
+        "속행": ""
+    }
 
 }

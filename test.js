@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer')
 const fs = require('fs/promises')
 const dictionary = require("./Translate.json")
 const { map, index } = require('cheerio/lib/api/traversing')
+const util = require("util"); // oben in die datei zu den anderen imports
 
 // const browser = await puppeteer.launch({ headless: false });
 
@@ -109,16 +110,56 @@ async function get_stats(){
         await button.click();
     }
     await sleep(1000);
-    const skills = await page.evaluate(() =>{
-        const ausgabe = [];
-        for(let ii = 2; ii < 10; ii++){
-            for (let i = 1; i < 4; i++) {
-                ausgabe.push(Array.from(document.querySelectorAll(`#char-app > div > div.char-layout.mt-2 > div.main-wrap > div > div > div > div > div:nth-child(${ii}) > div:nth-child(${i})`)).map(x => x.textContent));
-                ausgabe.push(Array.from(document.querySelectorAll(`#char-app > div > div.char-layout.mt-2 > div.main-wrap > div > div > div > div > div:nth-child(${ii}) > div:nth-child(${i}) > img`)).map(x => x.src));            
-            }
-        }
-        return ausgabe  
-    })
+    const skills = await page.evaluate((dictionary) =>{
+        const skillData = []; // array for final data
+
+        const skillItems = document.querySelectorAll('#char-app .char-skill-item'); // contains all main skill boxes
+
+        skillItems.forEach((skillItem) => {
+            // place to store info about the currently processed skill
+            const singleSkillInfo = {
+                skill: {},
+                gems: [],
+                runes: [],
+                
+            };
+
+            // contains the info rows of the current skill item (skill, runes, gems)
+            skillItem.querySelectorAll('.media').forEach((skillListElement, index) => {
+                // check which kind of element this is
+            
+                // if its the first itteration of the loop, its the skill
+                if (index === 0) {
+                    const skillTranslator = getTranslator("Skills-Sorc");
+                    singleSkillInfo.skill = {
+                        image: skillListElement.querySelector('img').src,
+                        name: skillTranslator(skillListElement.querySelector('.--name').innerText),
+                        level: parseInt(skillListElement.querySelector('.--title').innerText.split(':').pop().trim()),
+                    };
+                }
+
+                // check if element is a gem (if the row contains an element with the class .text-grade5 its a gem)
+                else if (skillListElement.querySelectorAll('.text-grade5').length > 0) {
+                    singleSkillInfo.gems.push({
+                        image: skillListElement.querySelector('img').src,
+                        name: skillListElement.querySelector('.text-grade5').innerText,
+                        info: skillListElement.querySelector('p span:last-child').innerText,
+                    });
+                }
+
+                // if its not the skill and not a gem, its a rune
+                else {
+                    singleSkillInfo.runes.push({
+                        image: skillListElement.querySelector('img').src,
+                        name: skillListElement.querySelector('strong').innerText,
+                        info: skillListElement.querySelector('p span:last-child').innerText,
+                    });
+                }
+            });
+            skillData.push(singleSkillInfo);
+        });
+        return skillData
+    },dictionary);
     await fs.writeFile("werte_Skills_kr.txt", skills.join("\r\n"))
 
     await browser.close()
@@ -135,19 +176,35 @@ async function get_stats(){
         stats[i].stat = dictionary.Stats[stats[i].stat]
     }
 
+    //länge = skills.length;
+    //for (let i = 0; i < länge; i++){
+    //    skills[i].skill.name = dictionary['Skills-Sorc'][skills[i].skill.name]
+    //    
+    //    //skills[i].gems.name = dictionary.Gem[skills[i].gems.name]
+    //}
+    console.log(skills[0].gems[0].name)
     return {stats : stats, engraving : engraving, skill : skills};
 }
 //get_stats()
 
 function translate(input) {
-    if (!(input in dictionary.Stats)) return input;
+    if (!(input in dictionary.Engraving)) return input;
     return dictionary[input];
-  }
+}
+
+function getTranslator(namespace) {
+    return function(string) {
+        if (!(string in dictionary[namespace])) return string;
+        return dictionary[namespace][string];
+    }
+}
 
 async function main(){
     
     var test = await get_stats()
-    console.log(test)
+    //console.log(test)
+    console.log(util.inspect(test, false, null, true));
+
     //console.info(values);
 }
 //console.info(translate("치명"))
