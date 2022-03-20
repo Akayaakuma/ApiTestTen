@@ -40,9 +40,7 @@ async function test(){
         }
         return ausgabe  
     })
-    
     await browser.close()
-
     länge = skills.length;
     for (let i = 0; i < länge; i++){
         skills[i].SkillName = dictionary['Skills-Sorc'][skills[i].SkillName]
@@ -50,7 +48,6 @@ async function test(){
         skills[i].SRuneTwo = dictionary.Rune[skills[i].SRuneTwo]
         skills[i].SRuneTree = dictionary.Rune[skills[i].SRuneTree]
     }
-
     console.log(skills)
 }
 
@@ -66,7 +63,6 @@ async function ttest(){
     await sleep(1000);
 
     const skills = await page.evaluate(() =>{
-
         const skillData = []; // array for final data
 
         const skillItems = document.querySelectorAll('#char-app .char-skill-item'); // contains all main skill boxes
@@ -112,9 +108,9 @@ async function ttest(){
             });
             skillData.push(singleSkillInfo);
         });
+        return skillData
     });
     await browser.close()
-    console.log(skills)
     return skills
 }
 async function main(){
