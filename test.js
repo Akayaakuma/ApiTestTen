@@ -110,12 +110,12 @@ async function get_stats(){
         await button.click();
     }
     await sleep(1000);
-    const skills = await page.evaluate((getTranslator) =>{
+    const skills = await page.evaluate((dictionary) =>{
         const skillData = []; // array for final data
 
         const skillItems = document.querySelectorAll('#char-app .char-skill-item'); // contains all main skill boxes
 
-        skillItems.forEach((skillItem,getTranslator) => {
+        skillItems.forEach((skillItem) => {
             // place to store info about the currently processed skill
             const singleSkillInfo = {
                 skill: {},
@@ -140,9 +140,15 @@ async function get_stats(){
 
                 // check if element is a gem (if the row contains an element with the class .text-grade5 its a gem)
                 else if (skillListElement.querySelectorAll('.text-grade5').length > 0) {
+                    const nameText = skillListElement.querySelector('.text-grade5').innerText;
+                    const [value, name] = /([0-9]+.[0-9])+% (.+)$/.match(nameText).slice(1, 3);
+                    const skillTranslator = getTranslator("Gem")
                     singleSkillInfo.gems.push({
                         image: skillListElement.querySelector('img').src,
-                        name: skillListElement.querySelector('.text-grade5').innerText,
+                        name: {
+                            Lev: value,
+                            name: skillTranslator(name)
+                        },
                         info: skillListElement.querySelector('p span:last-child').innerText,
                     });
                 }
@@ -155,11 +161,18 @@ async function get_stats(){
                         info: skillListElement.querySelector('p span:last-child').innerText,
                     });
                 }
+
+                function getTranslator(namespace) {
+                    return function(string) {
+                        if (!(string in dictionary[namespace])) return string;
+                        return dictionary[namespace][string];
+                    }
+                }
             });
             skillData.push(singleSkillInfo);
         });
         return skillData
-    },getTranslator);
+    },dictionary);
     await fs.writeFile("werte_Skills_kr.txt", skills.join("\r\n"))
 
     await browser.close()
@@ -176,13 +189,6 @@ async function get_stats(){
         stats[i].stat = dictionary.Stats[stats[i].stat]
     }
 
-    //länge = skills.length;
-    //for (let i = 0; i < länge; i++){
-    //    skills[i].skill.name = dictionary['Skills-Sorc'][skills[i].skill.name]
-    //    
-    //    //skills[i].gems.name = dictionary.Gem[skills[i].gems.name]
-    //}
-    console.log(skills[0].gems[0].name)
     return {stats : stats, engraving : engraving, skill : skills};
 }
 //get_stats()
