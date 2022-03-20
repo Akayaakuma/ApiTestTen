@@ -53,4 +53,73 @@ async function test(){
 
     console.log(skills)
 }
-test()
+
+async function ttest(){
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    await page.goto("https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C")
+    await sleep(2000);
+    const [button] = await page.$x("//button[contains(., '스킬')]");
+    if (button) {
+        await button.click();
+    }
+    await sleep(1000);
+
+    const skills = await page.evaluate(() =>{
+
+        const skillData = []; // array for final data
+
+        const skillItems = document.querySelectorAll('#char-app .char-skill-item'); // contains all main skill boxes
+
+        skillItems.forEach((skillItem) => {
+            // place to store info about the currently processed skill
+            const singleSkillInfo = {
+                skill: {},
+                runes: [],
+                gems: [],
+            };
+
+            // contains the info rows of the current skill item (skill, runes, gems)
+            skillItem.querySelectorAll('.media').forEach((skillListElement, index) => {
+                // check which kind of element this is
+            
+                // if its the first itteration of the loop, its the skill
+                if (index === 0) {
+                    singleSkillInfo.skill = {
+                        image: skillListElement.querySelector('img').src,
+                        name: skillListElement.querySelector('.--name').innerText,
+                        level: parseInt(skillListElement.querySelector('.--title').innerText.split(':').pop().trim()),
+                    };
+                }
+
+                // check if element is a gem (if the row contains an element with the class .text-grade5 its a gem)
+                else if (skillListElement.querySelectorAll('.text-grade5').length > 0) {
+                    singleSkillInfo.gems.push({
+                        image: skillListElement.querySelector('img').src,
+                        name: skillListElement.querySelector('.text-grade5').innerText,
+                        info: skillListElement.querySelector('p span:last-child').innerText,
+                    });
+                }
+
+                // if its not the skill and not a gem, its a rune
+                else {
+                    singleSkillInfo.runes.push({
+                        image: skillListElement.querySelector('img').src,
+                        name: skillListElement.querySelector('strong').innerText,
+                        info: skillListElement.querySelector('p span:last-child').innerText,
+                    });
+                }
+            });
+            skillData.push(singleSkillInfo);
+        });
+    });
+    await browser.close()
+    console.log(skills)
+    return skills
+}
+async function main(){
+    var zeugs = await ttest()
+    console.log(zeugs)
+}
+
+main()
