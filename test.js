@@ -65,7 +65,14 @@ async function get_stats(){
     const page = await browser.newPage()
     await page.goto("https://loawa.com/char/%EC%A0%9C%EC%9E%90") //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
     await sleep(1000);
-    const stats = await page.evaluate(() =>{
+    const stats = await page.evaluate((dictionary) =>{
+        function getTranslator(namespace) {
+            return function(string) {
+                if (!(string in dictionary[namespace])) return string;
+                return dictionary[namespace][string];
+            }
+        }
+        const skillTranslator = getTranslator("Stats");
         const ausgabe = [];
         x = 0
         for (let ii = 4;ii < 7; ii++){
@@ -76,31 +83,38 @@ async function get_stats(){
                 const parent = document.querySelector(
                     `#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i})`
                 );
-                const stat = parent.querySelector('span.--title').textContent;
-                const value = parent.querySelector('span.--value').textContent;
+                const stat = skillTranslator(parent.querySelector('span.--title').textContent);
+                const value = skillTranslator(parent.querySelector('span.--value').textContent);
 
                 ausgabe[x] = {stat, value};
                 x++
             }
         }
         return ausgabe  
-    })
+    },dictionary)
     await fs.writeFile("werte_right_kr.txt", stats.join("\r\n"))
 
-    const engraving = await page.evaluate(() =>{
+    const engraving = await page.evaluate((dictionary) =>{
+        function getTranslator(namespace) {
+            return function(string) {
+                if (!(string in dictionary[namespace])) return string;
+                return dictionary[namespace][string];
+            }
+        }
+        const skillTranslator = getTranslator("Engraving");
         const skillInfos = [];
         for (let i = 1; i < 7; i++) {
             const parent = document.querySelector(
                 `#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i})`
             );
-            const text = parent.querySelector('span').textContent;
+            const text = skillTranslator(parent.querySelector('span').textContent);
             const image = parent.querySelector('img').src;
             const level = parseInt(parent.innerText.split('').pop()); // funktioniert nur wenn das level immer einstellig bleibt
 
             skillInfos[i-1] = { text, image, level };
         }
         return skillInfos;  
-    })
+    },dictionary)
     
     //await fs.writeFile("werte_eng_kr.txt", engraving.join("\r\n"))
 
@@ -116,6 +130,12 @@ async function get_stats(){
         const skillItems = document.querySelectorAll('#char-app .char-skill-item'); // contains all main skill boxes
 
         skillItems.forEach((skillItem) => {
+            function getTranslator(namespace) {
+                return function(string) {
+                    if (!(string in dictionary[namespace])) return string;
+                    return dictionary[namespace][string];
+                }
+            }
             // place to store info about the currently processed skill
             const singleSkillInfo = {
                 skill: {},
@@ -142,82 +162,47 @@ async function get_stats(){
                 else if (skillListElement.querySelectorAll('.text-grade5').length > 0) {
                     const skillTranslator = getTranslator("Gem");
                     const nameText = skillListElement.querySelector('.text-grade5').innerText;
-                    const [value, name] = /([0-9]+(.+))/.exec(nameText).slice(1, 3);
+                    const [level, name] = /([0-9]+)(.+)/.exec(nameText).slice(1, 3);
 
                     const infoText = skillListElement.querySelector('p span:last-child').innerText;
-                    const [invalue, infoName] = /([0-9]+.[0-9]+)% (.+)$/.exec(infoText).slice(1, 3);
+                    const [infoValue, infoName] = /([0-9]+.[0-9]+)% (.+)$/.exec(infoText).slice(1, 3);
+
                     singleSkillInfo.gems.push({
                         image: skillListElement.querySelector('img').src,
-                        name: {
-                            value,
-                            name: skillTranslator(name)
-                        },
+                        name: skillTranslator(name),
+                        level,
                         info: {
-                            invalue,
-                            name: sillTranslator(infoName)
+                            value: infoValue,
+                            name: skillTranslator(infoName)
                         },
                     });
                 }
 
                 // if its not the skill and not a gem, its a rune
                 else {
+                    const skillTranslator = getTranslator("Runen");
                     singleSkillInfo.runes.push({
                         image: skillListElement.querySelector('img').src,
-                        name: skillListElement.querySelector('strong').innerText,
+                        name: skillTranslator(skillListElement.querySelector('strong').innerText),
                         info: skillListElement.querySelector('p span:last-child').innerText,
                     });
-                }
-
-                function getTranslator(namespace) {
-                    return function(string) {
-                        if (!(string in dictionary[namespace])) return string;
-                        return dictionary[namespace][string];
-                    }
                 }
             });
             skillData.push(singleSkillInfo);
         });
         return skillData
     },dictionary);
-    await fs.writeFile("werte_Skills_kr.txt", skills.join("\r\n"))
 
     await browser.close()
-    //console.info(stats.map(translate))
-
-    
-    länge = engraving.length;
-    for (let i = 0; i < länge; i++){
-        engraving[i].text = dictionary.Engraving[engraving[i].text]
-    }
-    
-    länge = stats.length;
-    for (let i = 0; i < länge; i++){
-        stats[i].stat = dictionary.Stats[stats[i].stat]
-    }
 
     return {stats : stats, engraving : engraving, skill : skills};
 }
-//get_stats()
 
-function translate(input) {
-    if (!(input in dictionary.Engraving)) return input;
-    return dictionary[input];
-}
-
-function getTranslator(namespace) {
-    return function(string) {
-        if (!(string in dictionary[namespace])) return string;
-        return dictionary[namespace][string];
-    }
-}
-
-async function main(){
-    
+async function main(){ 
     var test = await get_stats()
     //console.log(test)
     console.log(util.inspect(test, false, null, true));
 
-    //console.info(values);
 }
-//console.info(translate("치명"))
+
 main()

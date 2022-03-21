@@ -8,7 +8,6 @@
         "숙련": "Expertise"
     },
 
-
     "Skills-Sorc" :{
         "혹한의 부름": "Frost Call",
         "천벌": "Punishing Strike",
@@ -47,11 +46,17 @@
     },
 
     "Runen" : {
-        "풍요": "",
-        "질풍": "",
-        "심판": "",
-        "단죄": "",
-        "속행": ""
+        "풍요": "Wealth",
+        "질풍": "Galewind",
+        "심판": "Judgment",
+        "단죄": "Conviction",
+        "속행": "Quick Recharge",
+        "광분": "Rage",
+        "출혈": "Bleed",
+        "압도": "Overwhelm",
+        "수호": "Protection",
+        "정화": "Purify",
+        "집중": "Focus",
+        "철벽": "Iron Wall"
     }
-
 }

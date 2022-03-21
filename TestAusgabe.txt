@@ -49,19 +49,21 @@
       gems: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
-          name: '10레벨 멸화의 보석',
-          info: '40.00% 증가'
+          name: 'Azure Gem(dmg)',
+          level: '10',
+          info: { value: '40.00', name: 'Damage' }
         },
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
-          name: '10레벨 홍염의 보석',
-          info: '20.00% 감소'
+          name: 'Farsea Gem(cdr)',
+          level: '10',
+          info: { value: '20.00', name: 'CDR' }
         }
       ],
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png',
-          name: '풍요',
+          name: 'Wealth',
           info: '스킬 적중 시 아이덴티티 게이지 획득량 40% 증가'
         }
       ]
@@ -75,19 +77,21 @@
       gems: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
-          name: '10레벨 멸화의 보석',
-          info: '40.00% 증가'
+          name: 'Azure Gem(dmg)',
+          level: '10',
+          info: { value: '40.00', name: 'Damage' }
         },
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
-          name: '10레벨 홍염의 보석',
-          info: '20.00% 감소'
+          name: 'Farsea Gem(cdr)',
+          level: '10',
+          info: { value: '20.00', name: 'CDR' }
         }
       ],
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png',
-          name: '질풍',
+          name: 'Galewind',
           info: '스킬 시전 속도가 12% 증가'
         }
       ]
@@ -101,14 +105,15 @@
       gems: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
-          name: '10레벨 멸화의 보석',
-          info: '40.00% 증가'
+          name: 'Azure Gem(dmg)',
+          level: '10',
+          info: { value: '40.00', name: 'Damage' }
         }
       ],
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png',
-          name: '풍요',
+          name: 'Wealth',
           info: '스킬 적중 시 아이덴티티 게이지 획득량 30% 증가'
         }
       ]
@@ -122,19 +127,21 @@
       gems: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
-          name: '10레벨 멸화의 보석',
-          info: '40.00% 증가'
+          name: 'Azure Gem(dmg)',
+          level: '10',
+          info: { value: '40.00', name: 'Damage' }
         },
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
-          name: '10레벨 홍염의 보석',
-          info: '20.00% 감소'
+          name: 'Farsea Gem(cdr)',
+          level: '10',
+          info: { value: '20.00', name: 'CDR' }
         }
       ],
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_201.png',
-          name: '심판',
+          name: 'Judgment',
           info: "스킬 적중 시 40% 확률로 '단죄' 상태를 제거하고 6초 동안 특수 효과 발동"
         }
       ]
@@ -148,19 +155,21 @@
       gems: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
-          name: '10레벨 멸화의 보석',
-          info: '40.00% 증가'
+          name: 'Azure Gem(dmg)',
+          level: '10',
+          info: { value: '40.00', name: 'Damage' }
         },
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
-          name: '10레벨 홍염의 보석',
-          info: '20.00% 감소'
+          name: 'Farsea Gem(cdr)',
+          level: '10',
+          info: { value: '20.00', name: 'CDR' }
         }
       ],
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png',
-          name: '질풍',
+          name: 'Galewind',
           info: '스킬 시전 속도가 12% 증가'
         }
       ]
@@ -174,19 +183,21 @@
       gems: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
-          name: '10레벨 멸화의 보석',
-          info: '40.00% 증가'
+          name: 'Azure Gem(dmg)',
+          level: '10',
+          info: { value: '40.00', name: 'Damage' }
         },
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
-          name: '10레벨 홍염의 보석',
-          info: '20.00% 감소'
+          name: 'Farsea Gem(cdr)',
+          level: '10',
+          info: { value: '20.00', name: 'CDR' }
         }
       ],
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png',
-          name: '질풍',
+          name: 'Galewind',
           info: '스킬 시전 속도가 14% 증가'
         }
       ]
@@ -201,7 +212,7 @@
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_198.png',
-          name: '단죄',
+          name: 'Conviction',
           info: "스킬 적중 시 40 확률로 자신에게 3초간 지속되는 '단죄' 상태 부여"
         }
       ]
@@ -216,7 +227,7 @@
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_196.png',
-          name: '속행',
+          name: 'Quick Recharge',
           info: '스킬 사용 시 일정 확률로 전체 재사용 대기 시간이 12% 감소'
         }
       ]
