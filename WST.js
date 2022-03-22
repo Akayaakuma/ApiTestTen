@@ -150,7 +150,7 @@ async function main(){
     //console.log(util.inspect(test, false, null, true));
     console.log("Gesammelt")
     //console.log(test.skill.skill)
-    test.forEach(skill => console.log(test.skill));
+    test.skill.forEach(skill => console.log(skill.skill));
     //console.log(JSON.stringify(test));
 
     // neues Zeug 
