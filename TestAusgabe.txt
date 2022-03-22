@@ -1,16 +1,16 @@
 {
   stats: [
-    { stat: 'Crit', value: '1796' },
-    { stat: 'Specialized', value: '0056' },
-    { stat: 'Domination', value: '0051' },
-    { stat: 'Swiftness', value: '0631' },
-    { stat: 'Endurance', value: '0053' },
-    { stat: 'Expertise', value: '0048' }
+    { stat: 'Crit', value: '1811' },
+    { stat: 'Specialized', value: '0058' },
+    { stat: 'Domination', value: '0061' },
+    { stat: 'Swiftness', value: '0666' },
+    { stat: 'Endurance', value: '0058' },
+    { stat: 'Expertise', value: '0057' }
   ],
   engraving: [
     {
-      text: 'All out attack',
-      image: 'https://static.loawa.com/seals/090.png',
+      text: '예리한 둔기',
+      image: 'https://static.loawa.com/seals/055.png',
       level: 3
     },
     {
@@ -42,9 +42,33 @@
   skill: [
     {
       skill: {
-        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_9.png',
-        name: 'Frost Call',
-        level: 12
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_3.png',
+        name: 'Blaze',
+        level: 12,
+        SRune: { RuneOne: '2', RuneTwo: '2', RuneTree: '1' }
+      },
+      gems: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
+          name: 'Azure Gem(dmg)',
+          level: '10',
+          info: { value: '40.00', name: 'Damage' }
+        }
+      ],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_206.png',
+          name: 'Bleed',
+          info: "스킬 적중 시 적을 6초간 '출혈' 상태로 만듦"
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_11.png',
+        name: 'Seraphic Hail',
+        level: 12,
+        SRune: { RuneOne: '2', RuneTwo: '3', RuneTree: '1' }
       },
       gems: [
         {
@@ -62,9 +86,9 @@
       ],
       runes: [
         {
-          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png',
-          name: 'Wealth',
-          info: '스킬 적중 시 아이덴티티 게이지 획득량 40% 증가'
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_202.png',
+          name: 'Rage',
+          info: '스킬 사용 시 일정 확률로 6초 동안 공격 속도, 이동 속도 16% 증가'
         }
       ]
     },
@@ -72,7 +96,37 @@
       skill: {
         image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_14.png',
         name: 'Punishing Strike',
-        level: 12
+        level: 12,
+        SRune: { RuneOne: '3', RuneTwo: '1', RuneTree: '1' }
+      },
+      gems: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
+          name: 'Azure Gem(dmg)',
+          level: '10',
+          info: { value: '40.00', name: 'Damage' }
+        },
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
+          name: 'Farsea Gem(cdr)',
+          level: '10',
+          info: { value: '20.00', name: 'CDR' }
+        }
+      ],
+      runes: [
+        {
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png',
+          name: 'Galewind',
+          info: '스킬 시전 속도가 14% 증가'
+        }
+      ]
+    },
+    {
+      skill: {
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_16.png',
+        name: 'Reverse Gravity',
+        level: 12,
+        SRune: { RuneOne: '2', RuneTwo: '3', RuneTree: '1' }
       },
       gems: [
         {
@@ -100,29 +154,8 @@
       skill: {
         image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_18.png',
         name: 'EsotericReaction',
-        level: 12
-      },
-      gems: [
-        {
-          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
-          name: 'Azure Gem(dmg)',
-          level: '10',
-          info: { value: '40.00', name: 'Damage' }
-        }
-      ],
-      runes: [
-        {
-          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png',
-          name: 'Wealth',
-          info: '스킬 적중 시 아이덴티티 게이지 획득량 30% 증가'
-        }
-      ]
-    },
-    {
-      skill: {
-        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_8.png',
-        name: 'Rime Arrow',
-        level: 12
+        level: 12,
+        SRune: { RuneOne: '3', RuneTwo: '1', RuneTree: '2' }
       },
       gems: [
         {
@@ -140,17 +173,18 @@
       ],
       runes: [
         {
-          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_201.png',
-          name: 'Judgment',
-          info: "스킬 적중 시 40% 확률로 '단죄' 상태를 제거하고 6초 동안 특수 효과 발동"
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_196.png',
+          name: 'Quick Recharge',
+          info: '스킬 사용 시 일정 확률로 전체 재사용 대기 시간이 12% 감소'
         }
       ]
     },
     {
       skill: {
-        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_5.png',
-        name: 'Explosion',
-        level: 12
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_8.png',
+        name: 'Rime Arrow',
+        level: 12,
+        SRune: { RuneOne: '3', RuneTwo: '1', RuneTree: '1' }
       },
       gems: [
         {
@@ -176,59 +210,33 @@
     },
     {
       skill: {
-        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_6.png',
-        name: 'Doomsday',
-        level: 12
-      },
-      gems: [
-        {
-          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_55.png',
-          name: 'Azure Gem(dmg)',
-          level: '10',
-          info: { value: '40.00', name: 'Damage' }
-        },
-        {
-          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_9_65.png',
-          name: 'Farsea Gem(cdr)',
-          level: '10',
-          info: { value: '20.00', name: 'CDR' }
-        }
-      ],
-      runes: [
-        {
-          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_194.png',
-          name: 'Galewind',
-          info: '스킬 시전 속도가 14% 증가'
-        }
-      ]
-    },
-    {
-      skill: {
-        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_3.png',
-        name: 'Blaze',
-        level: 10
+        image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_9.png',
+        name: 'Frost Call',
+        level: 10,
+        SRune: { RuneOne: '3', RuneTwo: '1', RuneTree: '1' }
       },
       gems: [],
       runes: [
         {
-          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_198.png',
-          name: 'Conviction',
-          info: "스킬 적중 시 40 확률로 자신에게 3초간 지속되는 '단죄' 상태 부여"
+          image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_204.png',
+          name: 'Wealth',
+          info: '스킬 적중 시 아이덴티티 게이지 획득량 40% 증가'
         }
       ]
     },
     {
       skill: {
         image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/SCS_Skill/SCS_Skill_01_17.png',
-        name: 'squall',
-        level: 4
+        name: 'Squall',
+        level: 4,
+        SRune: { RuneOne: '3', RuneTwo: '———', RuneTree: '———' }
       },
       gems: [],
       runes: [
         {
           image: 'https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Use/Use_7_196.png',
           name: 'Quick Recharge',
-          info: '스킬 사용 시 일정 확률로 전체 재사용 대기 시간이 12% 감소'
+          info: '스킬 사용 시 일정 확률로 전체 재사용 대기 시간이 8% 감소'
         }
       ]
     }

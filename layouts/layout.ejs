@@ -18,25 +18,84 @@
         </style>
     </head>
     <body>
-        <table class="table table-striped">
+        <table class="table Stats">
             <thead>
                 <tr>
-                    <th scope="col">Skill</th>
+                    <th scope="col">Stats</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Stats.forEach(function (stat) { %>
+                <tr>
+                    <th scope="row"><%= stat.name %></th>
+                    <td><%= stat.value %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <table class="table engraving">
+            <thead>
+                <tr>
+                    <th scope="col">Engraving</th>
                     <th scope="col">Level</th>
                     <th scope="col">Icon</th>
                 </tr>
             </thead>
             <tbody>
-                <% skills.forEach(function (skill) { %>
+                <% engraving.forEach(function (engrav) { %>
                 <tr>
-                    <th scope="row"><%= skill.name %></th>
-                    <td><%= skill.level %></td>
+                    <th scope="row"><%= engrav.name %></th>
+                    <td><%= engrav.lev %></td>
                     <td>
-                        <img src="<%= skill.image %>" alt="<%= skill.name %>" width="20" height="20" />
+                        <img src="<%= engrav.image %>" alt="<%= engrav.name %>" width="20" height="20" />
                     </td>
                 </tr>
                 <% }); %>
             </tbody>
         </table>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Icon</th>
+                    <th scope="col">Level</th>
+                    <th scope="col">Skill</th>
+                    <th scope="col">Skill Rune</th>
+                    <th scope="col">Gem1</th>
+                    <th scope="col">Gem2</th>
+                    <th scope="col">R Icon</th>
+                    <th scope="col">Rune</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <% skills.forEach(function (skill) { %>
+                <tr>
+                    <td>
+                        <img src="<%= skill.image %>" alt="<%= skill.name %>" width="20" height="20" />
+                    </td>
+                    <td><%= skill.level %></td>
+                    <th scope="row"><%= skill.name %></th>
+                    <td><%= skill.srune %></td>
+                    <td>
+                        <img src="<%= skill.Gem1 %>" alt="<%= skill.Gem1 %>" width="20" height="20" />
+                    </td>
+                    <td>
+                        <img src="<%= skill.Gem2 %>" alt="<%= skill.Gem2 %>" width="20" height="20" />
+                    </td>
+                    <td>
+                        <img src="<%= skill.rune %>" alt="<%= skill.rune %>" width="20" height="20" />
+                    </td>
+                    <td><%= skill.nrune %></td>
+                    
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+
+
     </body>
 </html>

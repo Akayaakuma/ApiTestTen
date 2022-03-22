@@ -12,7 +12,7 @@ function sleep(ms) {
 async function get_stats(){
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
-    await page.goto("https://loawa.com/char/%EC%A0%9C%EC%9E%90") //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
+    await page.goto("https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C") //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
     await sleep(1000);
     const stats = await page.evaluate((dictionary) =>{
         function getTranslator(namespace) {
@@ -26,9 +26,6 @@ async function get_stats(){
         x = 0
         for (let ii = 4;ii < 7; ii++){
             for (let i = 1; i < 3; i++) {
-                //ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i}) > span > span.--title`)).map(x => x.textContent));
-                //ausgabe.push(Array.from(document.querySelectorAll(`#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i}) > span > span.--value`)).map(x => x.textContent));
-                
                 const parent = document.querySelector(
                     `#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i})`
                 );
@@ -101,6 +98,11 @@ async function get_stats(){
                         image: skillListElement.querySelector('img').src,
                         name: skillTranslator(skillListElement.querySelector('.--name').innerText),
                         level: parseInt(skillListElement.querySelector('.--title').innerText.split(':').pop().trim()),
+                        SRune : {
+                            RuneOne: skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade2').textContent),
+                            RuneTwo: skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade1').textContent),
+                            RuneTree: skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade4').textContent),
+                        },
                     };
                 }
 
@@ -146,8 +148,9 @@ async function get_stats(){
 
 async function main(){ 
     var test = await get_stats()
-    //console.log(util.inspect(test, false, null, true));
+    console.log(util.inspect(test, false, null, true));
     console.log("Gesammelt")
+    console.log(test.skill[0].runes[0].image)
 
     // neues Zeug 
     const data = fs
@@ -157,14 +160,32 @@ async function main(){
 
     const variables = {
         skills: [
-            { name: test.skill[0].skill.name, level: test.skill[0].skill.level, image: test.skill[0].skill.image },
-            { name: test.skill[1].skill.name, level: test.skill[1].skill.level, image: test.skill[1].skill.image },
-            { name: test.skill[2].skill.name, level: test.skill[2].skill.level, image: test.skill[2].skill.image },
-            { name: test.skill[3].skill.name, level: test.skill[3].skill.level, image: test.skill[3].skill.image },
-            { name: test.skill[4].skill.name, level: test.skill[4].skill.level, image: test.skill[4].skill.image },
-            { name: test.skill[5].skill.name, level: test.skill[5].skill.level, image: test.skill[5].skill.image },
-            { name: test.skill[6].skill.name, level: test.skill[6].skill.level, image: test.skill[6].skill.image },
-            { name: test.skill[7].skill.name, level: test.skill[7].skill.level, image: test.skill[7].skill.image },
+            { name: test.skill[0].skill.name, level: test.skill[0].skill.level, image: test.skill[0].skill.image, srune: test.skill[0].skill.SRune, Gem1: test.skill[0].gems[0].image, rune: test.skill[0].runes[0].image, nrune: test.skill[0].runes[0].name },
+            { name: test.skill[1].skill.name, level: test.skill[1].skill.level, image: test.skill[1].skill.image, srune: test.skill[1].skill.SRune, Gem1: test.skill[1].gems[0].image, rune: test.skill[1].runes[0].image, nrune: test.skill[1].runes[0].name },
+            { name: test.skill[2].skill.name, level: test.skill[2].skill.level, image: test.skill[2].skill.image, srune: test.skill[2].skill.SRune, Gem1: test.skill[2].gems[0].image, rune: test.skill[2].runes[0].image, nrune: test.skill[2].runes[0].name },
+            { name: test.skill[3].skill.name, level: test.skill[3].skill.level, image: test.skill[3].skill.image, srune: test.skill[3].skill.SRune, Gem1: test.skill[3].gems[0].image, rune: test.skill[3].runes[0].image, nrune: test.skill[3].runes[0].name },
+            { name: test.skill[4].skill.name, level: test.skill[4].skill.level, image: test.skill[4].skill.image, srune: test.skill[4].skill.SRune, Gem1: test.skill[4].gems[0].image, rune: test.skill[4].runes[0].image, nrune: test.skill[4].runes[0].name },
+            { name: test.skill[5].skill.name, level: test.skill[5].skill.level, image: test.skill[5].skill.image, srune: test.skill[5].skill.SRune, Gem1: test.skill[5].gems[0].image, rune: test.skill[5].runes[0].image, nrune: test.skill[5].runes[0].name },
+            //{ name: test.skill[6].skill.name, level: test.skill[6].skill.level, image: test.skill[6].skill.image, srune: test.skill[6].skill.SRune, Gem1: test.skill[6].gems[0].image, rune: test.skill[6].runes[0].image, nrune: test.skill[6].runes[0].name },
+            //{ name: test.skill[7].skill.name, level: test.skill[7].skill.level, image: test.skill[7].skill.image, srune: test.skill[7].skill.SRune, Gem1: test.skill[7].gems[0].image, rune: test.skill[7].runes[0].image, nrune: test.skill[7].runes[0].name },
+        ],
+        Stats: [
+            { name: test.stats[0].stat, value: test.stats[0].value },
+            { name: test.stats[1].stat, value: test.stats[1].value },
+            { name: test.stats[2].stat, value: test.stats[2].value },
+            { name: test.stats[3].stat, value: test.stats[3].value },
+            { name: test.stats[4].stat, value: test.stats[4].value },
+            { name: test.stats[5].stat, value: test.stats[5].value },
+
+        ],
+        engraving: [
+            { name: test.engraving[0].text, lev: test.engraving[0].level, image: test.engraving[0].image },
+            { name: test.engraving[1].text, lev: test.engraving[1].level, image: test.engraving[1].image },
+            { name: test.engraving[2].text, lev: test.engraving[2].level, image: test.engraving[2].image },
+            { name: test.engraving[3].text, lev: test.engraving[3].level, image: test.engraving[3].image },
+            { name: test.engraving[4].text, lev: test.engraving[4].level, image: test.engraving[4].image },
+            { name: test.engraving[5].text, lev: test.engraving[5].level, image: test.engraving[5].image },
+
         ],
     };
 

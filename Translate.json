@@ -9,6 +9,10 @@
     },
 
     "Skills-Sorc" :{
+        "":"———",
+        "❶":"1",
+        "❷":"2",
+        "❸":"3",
         "혹한의 부름": "Frost Call",
         "천벌": "Punishing Strike",
         "엘리멘탈 리액트": "EsotericReaction",
