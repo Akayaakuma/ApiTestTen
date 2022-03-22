@@ -78,7 +78,7 @@
                     </td>
                     <td><%= skill.skill.level %></td>
                     <th scope="row"><%= skill.skill.name %></th>
-                    <td><%= skill.runes.join(", ") %></td>
+                    <td><%= skill.rune.join(", ") %></td>
                     <% skill.gems.forEach(function (gem) { %>
                     <td>
                         <img src="<%= gem.image %>" alt="<%= gem.name %>" width="20" height="20" />

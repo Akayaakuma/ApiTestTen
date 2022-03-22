@@ -149,7 +149,8 @@ async function main(){
     var test = await get_stats()
     //console.log(util.inspect(test, false, null, true));
     console.log("Gesammelt")
-    //console.log(test.skill[0].skill.name)
+    //console.log(test.skill.skill)
+    test.forEach(skill => console.log(test.skill));
     //console.log(JSON.stringify(test));
 
     // neues Zeug 
