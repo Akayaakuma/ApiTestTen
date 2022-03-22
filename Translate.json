@@ -27,7 +27,7 @@
         "엘레기안의 손길": "Elegians Touch"
     },
     "Rune":{
-        "":"———",
+        "":"——",
         "❶":"1",
         "❷":"2",
         "❸":"3"
@@ -39,7 +39,8 @@
         "저주받은 인형": "cursed Doll",
         "타격의 대가": "Hitmaster",
         "환류": "Reflux",
-        "아드레날린": "Adrenalin"
+        "아드레날린": "Adrenalin",
+        "예리한 둔기": "Keen Blunt Weapon"
     },
 
     "Gem" : {

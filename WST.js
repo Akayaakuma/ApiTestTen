@@ -97,7 +97,7 @@ async function get_stats(){
                         image: skillListElement.querySelector('img').src,
                         name: skillTranslator(skillListElement.querySelector('.--name').innerText),
                         level: parseInt(skillListElement.querySelector('.--title').innerText.split(':').pop().trim()),
-                        SRune : [
+                        rune : [
                             skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade2').textContent),
                             skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade1').textContent),
                             skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade4').textContent),
@@ -150,7 +150,7 @@ async function main(){
     //console.log(util.inspect(test, false, null, true));
     console.log("Gesammelt")
     //console.log(test.skill.skill)
-    test.skill.forEach(skill => console.log(skill.skill));
+    //test.skill.forEach(skill => console.log(skill.skill));
     //console.log(JSON.stringify(test));
 
     // neues Zeug 
@@ -159,38 +159,7 @@ async function main(){
         .toString()
         .replace(/[\t\n]/g, '');
 
-    const variables = {
-        skills: [
-            { name: test.skill[0].skill.name, level: test.skill[0].skill.level, image: test.skill[0].skill.image, srune: test.skill[0].skill.SRune, Gem1: test.skill[0].gems[0].image, rune: test.skill[0].rune.image, nrune: test.skill[0].rune.name },
-            { name: test.skill[1].skill.name, level: test.skill[1].skill.level, image: test.skill[1].skill.image, srune: test.skill[1].skill.SRune, Gem1: test.skill[1].gems[0].image, rune: test.skill[1].rune.image, nrune: test.skill[1].rune.name },
-            { name: test.skill[2].skill.name, level: test.skill[2].skill.level, image: test.skill[2].skill.image, srune: test.skill[2].skill.SRune, Gem1: test.skill[2].gems[0].image, rune: test.skill[2].rune.image, nrune: test.skill[2].rune.name },
-            { name: test.skill[3].skill.name, level: test.skill[3].skill.level, image: test.skill[3].skill.image, srune: test.skill[3].skill.SRune, Gem1: test.skill[3].gems[0].image, rune: test.skill[3].rune.image, nrune: test.skill[3].rune.name },
-            { name: test.skill[4].skill.name, level: test.skill[4].skill.level, image: test.skill[4].skill.image, srune: test.skill[4].skill.SRune, Gem1: test.skill[4].gems[0].image, rune: test.skill[4].rune.image, nrune: test.skill[4].rune.name },
-            { name: test.skill[5].skill.name, level: test.skill[5].skill.level, image: test.skill[5].skill.image, srune: test.skill[5].skill.SRune, Gem1: test.skill[5].gems[0].image, rune: test.skill[5].rune.image, nrune: test.skill[5].rune.name },
-            //{ name: test.skill[6].skill.name, level: test.skill[6].skill.level, image: test.skill[6].skill.image, srune: test.skill[6].skill.SRune, Gem1: test.skill[6].gems[0].image, rune: test.skill[6].rune.image, nrune: test.skill[6].rune[0].name },
-            //{ name: test.skill[7].skill.name, level: test.skill[7].skill.level, image: test.skill[7].skill.image, srune: test.skill[7].skill.SRune, Gem1: test.skill[7].gems[0].image, rune: test.skill[7].rune.image, nrune: test.skill[7].rune[0].name },
-        ],
-        Stats: [
-            { name: test.stats[0].stat, value: test.stats[0].value },
-            { name: test.stats[1].stat, value: test.stats[1].value },
-            { name: test.stats[2].stat, value: test.stats[2].value },
-            { name: test.stats[3].stat, value: test.stats[3].value },
-            { name: test.stats[4].stat, value: test.stats[4].value },
-            { name: test.stats[5].stat, value: test.stats[5].value },
-
-        ],
-        engraving: [
-            { name: test.engraving[0].text, lev: test.engraving[0].level, image: test.engraving[0].image },
-            { name: test.engraving[1].text, lev: test.engraving[1].level, image: test.engraving[1].image },
-            { name: test.engraving[2].text, lev: test.engraving[2].level, image: test.engraving[2].image },
-            { name: test.engraving[3].text, lev: test.engraving[3].level, image: test.engraving[3].image },
-            { name: test.engraving[4].text, lev: test.engraving[4].level, image: test.engraving[4].image },
-            { name: test.engraving[5].text, lev: test.engraving[5].level, image: test.engraving[5].image },
-
-        ],
-    };
-
-    const html = ejs.render(data, variables);
+    const html = ejs.render(data, test);
 
     const options = {
         remarkable: {

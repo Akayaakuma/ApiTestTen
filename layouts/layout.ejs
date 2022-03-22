@@ -26,9 +26,9 @@
                 </tr>
             </thead>
             <tbody>
-                <% Stats.forEach(function (stat) { %>
+                <% stats.forEach(function (stat) { %>
                 <tr>
-                    <th scope="row"><%= stat.name %></th>
+                    <th scope="row"><%= stat.stat %></th>
                     <td><%= stat.value %></td>
                 </tr>
                 <% }); %>
@@ -46,8 +46,8 @@
             <tbody>
                 <% engraving.forEach(function (engrav) { %>
                 <tr>
-                    <th scope="row"><%= engrav.name %></th>
-                    <td><%= engrav.lev %></td>
+                    <th scope="row"><%= engrav.text %></th>
+                    <td><%= engrav.level %></td>
                     <td>
                         <img src="<%= engrav.image %>" alt="<%= engrav.name %>" width="20" height="20" />
                     </td>
@@ -71,14 +71,14 @@
                 </tr>
             </thead>
             <tbody>
-                <% skills.forEach(function (skill) { %>
+                <% skill.forEach(function (skill) { %>
                 <tr>
                     <td>
                         <img src="<%= skill.skill.image %>" alt="<%= skill.skill.name %>" width="20" height="20" />
                     </td>
                     <td><%= skill.skill.level %></td>
                     <th scope="row"><%= skill.skill.name %></th>
-                    <td><%= skill.rune.join(", ") %></td>
+                    <td><%= skill.skill.rune.join(", ") %></td>
                     <% skill.gems.forEach(function (gem) { %>
                     <td>
                         <img src="<%= gem.image %>" alt="<%= gem.name %>" width="20" height="20" />
