@@ -83,8 +83,7 @@ async function get_stats(){
             const singleSkillInfo = {
                 skill: {},
                 gems: [],
-                runes: [],
-                
+                rune: {},  
             };
 
             // contains the info rows of the current skill item (skill, runes, gems)
@@ -98,11 +97,11 @@ async function get_stats(){
                         image: skillListElement.querySelector('img').src,
                         name: skillTranslator(skillListElement.querySelector('.--name').innerText),
                         level: parseInt(skillListElement.querySelector('.--title').innerText.split(':').pop().trim()),
-                        SRune : {
-                            RuneOne: skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade2').textContent),
-                            RuneTwo: skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade1').textContent),
-                            RuneTree: skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade4').textContent),
-                        },
+                        SRune : [
+                            skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade2').textContent),
+                            skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade1').textContent),
+                            skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade4').textContent),
+                        ],
                     };
                 }
 
@@ -129,11 +128,11 @@ async function get_stats(){
                 // if its not the skill and not a gem, its a rune
                 else {
                     const skillTranslator = getTranslator("Runen");
-                    singleSkillInfo.runes.push({
+                    singleSkillInfo.rune = {
                         image: skillListElement.querySelector('img').src,
                         name: skillTranslator(skillListElement.querySelector('strong').innerText),
                         info: skillListElement.querySelector('p span:last-child').innerText,
-                    });
+                    };
                 }
             });
             skillData.push(singleSkillInfo);
@@ -148,9 +147,10 @@ async function get_stats(){
 
 async function main(){ 
     var test = await get_stats()
-    console.log(util.inspect(test, false, null, true));
+    //console.log(util.inspect(test, false, null, true));
     console.log("Gesammelt")
-    console.log(test.skill[0].runes[0].image)
+    //console.log(test.skill[0].runes[0].image)
+    console.log(JSON.stringify(test));
 
     // neues Zeug 
     const data = fs
@@ -166,8 +166,8 @@ async function main(){
             { name: test.skill[3].skill.name, level: test.skill[3].skill.level, image: test.skill[3].skill.image, srune: test.skill[3].skill.SRune, Gem1: test.skill[3].gems[0].image, rune: test.skill[3].runes[0].image, nrune: test.skill[3].runes[0].name },
             { name: test.skill[4].skill.name, level: test.skill[4].skill.level, image: test.skill[4].skill.image, srune: test.skill[4].skill.SRune, Gem1: test.skill[4].gems[0].image, rune: test.skill[4].runes[0].image, nrune: test.skill[4].runes[0].name },
             { name: test.skill[5].skill.name, level: test.skill[5].skill.level, image: test.skill[5].skill.image, srune: test.skill[5].skill.SRune, Gem1: test.skill[5].gems[0].image, rune: test.skill[5].runes[0].image, nrune: test.skill[5].runes[0].name },
-            //{ name: test.skill[6].skill.name, level: test.skill[6].skill.level, image: test.skill[6].skill.image, srune: test.skill[6].skill.SRune, Gem1: test.skill[6].gems[0].image, rune: test.skill[6].runes[0].image, nrune: test.skill[6].runes[0].name },
-            //{ name: test.skill[7].skill.name, level: test.skill[7].skill.level, image: test.skill[7].skill.image, srune: test.skill[7].skill.SRune, Gem1: test.skill[7].gems[0].image, rune: test.skill[7].runes[0].image, nrune: test.skill[7].runes[0].name },
+            { name: test.skill[6].skill.name, level: test.skill[6].skill.level, image: test.skill[6].skill.image, srune: test.skill[6].skill.SRune, Gem1: test.skill[6].gems[0].image, rune: test.skill[6].runes[0].image, nrune: test.skill[6].runes[0].name },
+            { name: test.skill[7].skill.name, level: test.skill[7].skill.level, image: test.skill[7].skill.image, srune: test.skill[7].skill.SRune, Gem1: test.skill[7].gems[0].image, rune: test.skill[7].runes[0].image, nrune: test.skill[7].runes[0].name },
         ],
         Stats: [
             { name: test.stats[0].stat, value: test.stats[0].value },

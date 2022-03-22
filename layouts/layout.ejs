@@ -74,21 +74,25 @@
                 <% skills.forEach(function (skill) { %>
                 <tr>
                     <td>
-                        <img src="<%= skill.image %>" alt="<%= skill.name %>" width="20" height="20" />
+                        <img src="<%= skill.skill.image %>" alt="<%= skill.skill.name %>" width="20" height="20" />
                     </td>
-                    <td><%= skill.level %></td>
-                    <th scope="row"><%= skill.name %></th>
-                    <td><%= skill.srune %></td>
+                    <td><%= skill.skill.level %></td>
+                    <th scope="row"><%= skill.skill.name %></th>
+                    <td><%= skill.runes.join(", ") %></td>
+                    <% skill.gems.forEach(function (gem) { %>
                     <td>
-                        <img src="<%= skill.Gem1 %>" alt="<%= skill.Gem1 %>" width="20" height="20" />
+                        <img src="<%= gem.image %>" alt="<%= gem.name %>" width="20" height="20" />
                     </td>
+                    <% }); %>
+                    <% for (let i=skill.gems.length; i<2; i++) { %>
+                        <td>
+                            <img src="https://via.placeholder.com/20x20" alt="No Gem" width="20" height="20">
+                        </td>
+                    <% } %>
                     <td>
-                        <img src="<%= skill.Gem2 %>" alt="<%= skill.Gem2 %>" width="20" height="20" />
+                        <img src="<%= skill.rune.image %>" alt="<%= skill.rune.name %>" width="20" height="20" />
                     </td>
-                    <td>
-                        <img src="<%= skill.rune %>" alt="<%= skill.rune %>" width="20" height="20" />
-                    </td>
-                    <td><%= skill.nrune %></td>
+                    <td><%= skill.rune.name %></td>
                     
                 </tr>
                 <% }); %>
