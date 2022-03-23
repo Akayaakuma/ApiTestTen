@@ -9,10 +9,10 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function get_stats(){
+async function get_stats(link){
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
-    await page.goto("https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C") //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
+    await page.goto(link) //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
     await sleep(1000);
     const stats = await page.evaluate((dictionary) =>{
         function getTranslator(namespace) {
@@ -92,7 +92,7 @@ async function get_stats(){
             
                 // if its the first itteration of the loop, its the skill
                 if (index === 0) {
-                    const skillTranslator = getTranslator("Skills-Sorc");
+                    const skillTranslator = getTranslator("Skills");
                     singleSkillInfo.skill = {
                         image: skillListElement.querySelector('img').src,
                         name: skillTranslator(skillListElement.querySelector('.--name').innerText),
@@ -104,7 +104,7 @@ async function get_stats(){
                         ],
                     };
                 }
-
+                
                 // check if element is a gem (if the row contains an element with the class .text-grade5 its a gem)
                 else if (skillListElement.querySelectorAll('.text-grade5').length > 0) {
                     const skillTranslator = getTranslator("Gem");
@@ -139,14 +139,13 @@ async function get_stats(){
         });
         return skillData
     },dictionary);
-
     await browser.close()
 
     return {stats : stats, engraving : engraving, skill : skills};
 }
 
-async function main(){ 
-    var test = await get_stats()
+async function main(link){ 
+    var test = await get_stats(link)
     //console.log(util.inspect(test, false, null, true));
     console.log("Gesammelt")
     //console.log(test.skill.skill)
@@ -173,4 +172,4 @@ async function main(){
     .to('./test.pdf', () => console.log('Done'));
 }
 
-main()
+main("https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C")  //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C

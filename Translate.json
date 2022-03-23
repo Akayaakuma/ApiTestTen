@@ -8,7 +8,7 @@
         "숙련": "Expertise"
     },
 
-    "Skills-Sorc" :{
+    "Skills" :{
         "":"———",
         "❶":"1",
         "❷":"2",
@@ -36,11 +36,12 @@
     "Engraving" : {
         "속전속결": "All out attack",
         "원한": "Grudge",
-        "저주받은 인형": "cursed Doll",
+        "저주받은 인형": "Cursed Doll",
         "타격의 대가": "Hitmaster",
         "환류": "Reflux",
         "아드레날린": "Adrenalin",
-        "예리한 둔기": "Keen Blunt Weapon"
+        "예리한 둔기": "Keen Blunt Weapon",
+        "점화": "Ignite" 
     },
 
     "Gem" : {
