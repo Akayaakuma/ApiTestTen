@@ -1,9 +1,9 @@
-const dictionary = require("./Translate.json")
 const puppeteer = require('puppeteer')
 const util = require("util");
 const ejs = require('ejs');
 const fs = require('fs');
 const markdownpdf = require('markdown-pdf');
+const SkillTranslator = require("./translate/SkillTranslator");
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -14,14 +14,9 @@ async function get_stats(link){
     const page = await browser.newPage()
     await page.goto(link) //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
     await sleep(1000);
-    const stats = await page.evaluate((dictionary) =>{
-        function getTranslator(namespace) {
-            return function(string) {
-                if (!(string in dictionary[namespace])) return string;
-                return dictionary[namespace][string];
-            }
-        }
-        const skillTranslator = getTranslator("Stats");
+    const stats = await page.evaluate((SkillTranslator) =>{
+        console.log("TTT")
+        const statTranslator = new SkillTranslator("Stats");
         const ausgabe = [];
         x = 0
         for (let ii = 4;ii < 7; ii++){
@@ -29,37 +24,35 @@ async function get_stats(link){
                 const parent = document.querySelector(
                     `#abasic-tab > div > div.qul-box.qul-box-1.col-5.col-sm-5.col-md-4 > div > div:nth-child(${ii}) > div:nth-child(${i})`
                 );
-                const stat = skillTranslator(parent.querySelector('span.--title').textContent);
-                const value = skillTranslator(parent.querySelector('span.--value').textContent);
+                const stat = statTranslator(parent.querySelector('span.--title').textContent);
+                const value = statTranslator(parent.querySelector('span.--value').textContent);
 
                 ausgabe[x] = {stat, value};
                 x++
             }
         }
         return ausgabe  
-    },dictionary)
+    },SkillTranslator)
 
-    const engraving = await page.evaluate((dictionary) =>{
-        function getTranslator(namespace) {
-            return function(string) {
-                if (!(string in dictionary[namespace])) return string;
-                return dictionary[namespace][string];
-            }
-        }
-        const skillTranslator = getTranslator("Engraving");
+    console.log(stats)
+    console.log("Test")
+
+    const engraving = await page.evaluate((SkillTranslator) =>{
+
+        const engrTranslator = new SkillTranslator("Engraving");
         const skillInfos = [];
         for (let i = 1; i < 7; i++) {
             const parent = document.querySelector(
                 `#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i})`
             );
-            const text = skillTranslator(parent.querySelector('span').textContent);
+            const text = engrTranslator(parent.querySelector('span').textContent);
             const image = parent.querySelector('img').src;
             const level = parseInt(parent.innerText.split('').pop()); // funktioniert nur wenn das level immer einstellig bleibt
 
             skillInfos[i-1] = { text, image, level };
         }
         return skillInfos;  
-    },dictionary)
+    },SkillTranslator)
 
     const [button] = await page.$x("//button[contains(., '스킬')]");
 
@@ -172,4 +165,4 @@ async function main(link){
     .to('./test.pdf', () => console.log('Done'));
 }
 
-main("https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C")  //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
+main("https://loawa.com/char/%EA%B7%B8%EB%A6%B0%EB%8C%80%ED%91%9C")  //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
