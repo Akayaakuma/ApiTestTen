@@ -10,7 +10,7 @@ function sleep(ms) {
 }
 
 async function get_stats(link){
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch() //{ headless: false }
     const page = await browser.newPage()
     await page.goto(link) //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
     await sleep(1000);
@@ -38,7 +38,7 @@ async function get_stats(link){
         }
         return ausgabe  
     },dictionary)
-
+    
     const engraving = await page.evaluate((dictionary) =>{
         function getTranslator(namespace) {
             return function(string) {
@@ -49,14 +49,19 @@ async function get_stats(link){
         const skillTranslator = getTranslator("Engraving");
         const skillInfos = [];
         for (let i = 1; i < 7; i++) {
-            const parent = document.querySelector(
-                `#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i})`
-            );
-            const text = skillTranslator(parent.querySelector('span').textContent);
-            const image = parent.querySelector('img').src;
-            const level = parseInt(parent.innerText.split('').pop()); // funktioniert nur wenn das level immer einstellig bleibt
+            try{
+                const parent = document.querySelector(
+                    `#abasic-tab > div > div.qul-box.qul-box-3.col > div > div.row.char-equip-engrave > div:nth-child(${i})`
+                );
+                const text = skillTranslator(parent.querySelector('span').textContent);
+                const image = parent.querySelector('img').src;
+                const level = parseInt(parent.innerText.split('').pop()); // funktioniert nur wenn das level immer einstellig bleibt
 
-            skillInfos[i-1] = { text, image, level };
+                skillInfos[i-1] = { text, image, level };
+                }catch(err){
+                    console.log(err)
+                }
+                    
         }
         return skillInfos;  
     },dictionary)
@@ -144,8 +149,28 @@ async function get_stats(link){
     return {stats : stats, engraving : engraving, skill : skills};
 }
 
+async function get_class(link){
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    await page.goto(link)
+    await sleep(500)
+    const class_name = await page.evaluate((dictionary) =>{
+        function getTranslator(namespace) {
+            return function(string) {
+                if (!(string in dictionary[namespace])) return string;
+                return dictionary[namespace][string];
+            }
+        }
+        const classTranslator = getTranslator("Class");
+        const class_name = classTranslator(document.querySelector(`#char-app > div > div.char-layout.mt-2 > div.sidebar > div.char-info-wrap > dl:nth-child(3) > dd`).textContent);
+        return class_name
+    },dictionary)
+    return class_name
+}
+
 async function main(link){ 
     var test = await get_stats(link)
+    var class_name = await get_class(link)
     //console.log(util.inspect(test, false, null, true));
     console.log("Gesammelt")
     //console.log(test.skill.skill)
@@ -169,7 +194,8 @@ async function main(link){
 
     markdownpdf(options)
     .from.string(html)
-    .to('./test.pdf', () => console.log('Done'));
+    .to(`./${class_name}.pdf`, () => console.log('Done'));
 }
 
-main("https://loawa.com/char/%EA%B7%B8%EB%A6%B0%EB%8C%80%ED%91%9C")  //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
+const link = process.argv[2];
+main(link)  //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C

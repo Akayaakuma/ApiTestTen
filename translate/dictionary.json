@@ -57,7 +57,12 @@
         "점화": "Ignite",
         "슈퍼 차지": "Super Charge",
         "기습의 대가": "Ambush Master",
-        "잔재된 기운": "Remaining Energy"
+        "잔재된 기운": "Remaining Energy",
+        "오의난무": "Esoteric Flurry",
+        "불굴": "Fortitude",
+        "정기 흡수": "Spirit Absorption",
+        "중갑 착용": "Heavy Armor",
+        "정밀 단도": "Precise Dagger"
     },
 
     "Gem" : {
@@ -80,5 +85,35 @@
         "정화": "Purify",
         "집중": "Focus",
         "철벽": "Iron Wall"
+    },
+
+    "Class":{
+        "디스트로이어": "Destroyer",
+        "버서커": "Berserker",
+        "워로드": "Gunlancer",
+        "홀리나이트": "Paladin",
+
+        "기공사": "Soulfist",
+        "배틀마스터": "Wardancer",
+        "스트라이커": "Stricker",
+        "인파이터": "Scrapper",
+        "창술사": "Glaivier",
+
+        "건슬링어": "Gunslinger",
+        "데빌헌터": "Deadeye",
+        "블래스터": "Artillerist",
+        "스카우터": "Machinist",
+        "호크아이": "Sharpshooter",
+
+        "바드": "Bard",
+        "서머너": "Summoner",
+        "소서리스": "Sorceress",
+        "아르카나": "Arcanist",
+
+        "데모닉": "Shadowhunter",
+        "리퍼": "Reaper",
+        "블레이드": "Deathblade",
+
+        "도화가": "Artist"
     }
 }
