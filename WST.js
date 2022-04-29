@@ -1,6 +1,5 @@
 const dictionary = require("./translate/dictionary.json")
 const puppeteer = require('puppeteer')
-const util = require("util");
 const ejs = require('ejs');
 const fs = require('fs');
 const markdownpdf = require('markdown-pdf');
@@ -10,10 +9,11 @@ function sleep(ms) {
 }
 
 async function get_stats(link){
-    const browser = await puppeteer.launch() //{ headless: false }
+    const browser = await puppeteer.launch() //{ headless: false })
     const page = await browser.newPage()
-    await page.goto(link) //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
-    await sleep(1000);
+    await page.goto(link, { waitUntil: 'networkidle0' }) //https://loawa.com/char/%EB%9D%BC%EB%B8%94%EB%A3%A8%EC%86%8C%EC%84%9C
+    //await sleep(5000);
+    console.log("Evaluate1")
     const stats = await page.evaluate((dictionary) =>{
         function getTranslator(namespace) {
             return function(string) {
@@ -38,7 +38,8 @@ async function get_stats(link){
         }
         return ausgabe  
     },dictionary)
-    
+    console.log("Evaluate1Ende")
+    console.log("Evaluate2")
     const engraving = await page.evaluate((dictionary) =>{
         function getTranslator(namespace) {
             return function(string) {
@@ -65,16 +66,16 @@ async function get_stats(link){
         }
         return skillInfos;  
     },dictionary)
-
+    console.log("Evaluate2Ende")
     const [button] = await page.$x("//button[contains(., '스킬')]");
 
     if (button) {
         await button.click();
     }
-    await sleep(1000);
+    await sleep(5000);
+    console.log("Evaluate3")
     const skills = await page.evaluate((dictionary) =>{
         const skillData = []; // array for final data
-
         const skillItems = document.querySelectorAll('#char-app .char-skill-item'); // contains all main skill boxes
 
         skillItems.forEach((skillItem) => {
@@ -90,7 +91,7 @@ async function get_stats(link){
                 gems: [],
                 rune: {},  
             };
-
+            
             // contains the info rows of the current skill item (skill, runes, gems)
             skillItem.querySelectorAll('.media').forEach((skillListElement, index) => {
                 // check which kind of element this is
@@ -106,10 +107,17 @@ async function get_stats(link){
                             skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade2').textContent),
                             skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade1').textContent),
                             skillTranslator(skillListElement.querySelector('.skill-tripod-summary > span.d-block.ms-1.text-grade4').textContent),
-                        ],
+
+                            //.d-flex align-items-center > d-flex align-items-center me-2 > text-grade2
+                        ]
+                        //test: [
+                            //skillListElement.querySelector('.d-flex align-items-center > d-flex align-items-center me-2 > text-grade2').textContent,
+                        //],
                     };
-                }
                 
+                //console.log(test)
+
+                }
                 // check if element is a gem (if the row contains an element with the class .text-grade5 its a gem)
                 else if (skillListElement.querySelectorAll('.text-grade5').length > 0) {
                     const skillTranslator = getTranslator("Gem");
@@ -143,17 +151,17 @@ async function get_stats(link){
             skillData.push(singleSkillInfo);
         });
         return skillData
-    },dictionary);
+    },dictionary)
     await browser.close()
-
+    console.log("Evaluate3Ende")
     return {stats : stats, engraving : engraving, skill : skills};
 }
 
 async function get_class(link){
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
-    await page.goto(link)
-    await sleep(500)
+    await page.goto(link, { waitUntil: 'networkidle0' })
+    //await sleep(5000)
     const class_name = await page.evaluate((dictionary) =>{
         function getTranslator(namespace) {
             return function(string) {
@@ -165,14 +173,17 @@ async function get_class(link){
         const class_name = classTranslator(document.querySelector(`#char-app > div > div.char-layout.mt-2 > div.sidebar > div.char-info-wrap > dl:nth-child(3) > dd`).textContent);
         return class_name
     },dictionary)
+    await browser.close()
     return class_name
 }
 
 async function main(link){ 
+    console.log("Start")
     var test = await get_stats(link)
+    console.log("Gesammelt")
     var class_name = await get_class(link)
     //console.log(util.inspect(test, false, null, true));
-    console.log("Gesammelt")
+    console.log("Pdf Erstelen")
     //console.log(test.skill.skill)
     //test.skill.forEach(skill => console.log(skill.skill));
     //console.log(JSON.stringify(test));
@@ -194,7 +205,7 @@ async function main(link){
 
     markdownpdf(options)
     .from.string(html)
-    .to(`./${class_name}.pdf`, () => console.log('Done'));
+    .to(`./AusgabePdf/${class_name}XXX.pdf`, () => console.log('Done'));
 }
 
 const link = process.argv[2];
